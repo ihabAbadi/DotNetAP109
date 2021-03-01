@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoursAP2019.Interfaces
 {
-    interface IDislpayable
+    interface IDisplayable
     {
         void Display();
     }

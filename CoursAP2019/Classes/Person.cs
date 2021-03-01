@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CoursAP2019.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CoursAP2019.Classes
 {
-    public class Person
+    public class Person : IDisplayable
     {
         private string firstName;
         private string lastName;

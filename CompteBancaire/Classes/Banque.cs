@@ -17,5 +17,24 @@ namespace CompteBancaire.Classes
             Nom = nom;
             Comptes = new List<Compte>();
         }
+
+        public void CreationCompte(Compte compte)
+        {
+            Comptes.Add(compte);
+        }
+
+        public Compte RechercherCompte(int numero)
+        {
+            Compte compte = null;
+            foreach(Compte c in Comptes)
+            {
+                if(c.Numero == numero)
+                {
+                    compte = c;
+                    break;
+                }
+            }
+            return compte;
+        }
     }
 }

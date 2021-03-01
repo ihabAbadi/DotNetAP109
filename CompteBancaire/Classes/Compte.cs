@@ -20,15 +20,28 @@ namespace CompteBancaire.Classes
         {
             numero = ++compteur;
             Operations = new List<Operation>();
+            solde = 0;
         }
 
         public virtual bool Depot(Operation operation)
         {
+            if(operation.Montant > 0)
+            {
+                Operations.Add(operation);
+                solde += operation.Montant;
+                return true;
+            }
             return false;
         }
 
         public virtual bool Retrait(Operation operation)
         {
+            if(Solde >= Math.Abs(operation.Montant) && operation.Montant < 0)
+            {
+                Operations.Add(operation);
+                solde += operation.Montant;
+                return true;
+            }
             return false;
         }
 

@@ -17,7 +17,7 @@ namespace CompteBancaire.Classes
 
         public bool CalculeInteret()
         {
-            return false;
+            return Depot(new Operation(Solde * Taux / 100));
         }
     }
 }

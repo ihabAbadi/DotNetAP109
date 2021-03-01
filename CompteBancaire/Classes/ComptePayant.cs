@@ -17,12 +17,20 @@ namespace CompteBancaire.Classes
 
         public override bool Depot(Operation operation)
         {
-            return base.Depot(operation);
+            if(operation.Montant > coutOperation && base.Depot(operation))
+            {
+                return base.Retrait(new Operation(coutOperation * -1));
+            }
+            return false;
         }
 
         public override bool Retrait(Operation operation)
         {
-            return base.Retrait(operation);
+            if(Solde >= (Math.Abs(operation.Montant) + CoutOperation))
+            {
+                return base.Retrait(operation) && base.Retrait(new Operation(coutOperation * -1));
+            }
+            return false;
         }
     }
 }

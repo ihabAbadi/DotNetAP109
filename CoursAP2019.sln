@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAP2019", "CoursAP2019\CoursAP2019.csproj", "{79F39733-1F33-4E0F-939A-88B7504743AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAP2019", "CoursAP2019\CoursAP2019.csproj", "{79F39733-1F33-4E0F-939A-88B7504743AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompteBancaire", "CompteBancaire\CompteBancaire.csproj", "{9191FD1C-7328-444D-A4F7-AA1F3FF1425F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompteBancaire", "CompteBancaire\CompteBancaire.csproj", "{9191FD1C-7328-444D-A4F7-AA1F3FF1425F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum", "Forum\Forum.csproj", "{CBAA88A0-9C34-41C6-A516-A96D2D4AAC9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9191FD1C-7328-444D-A4F7-AA1F3FF1425F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9191FD1C-7328-444D-A4F7-AA1F3FF1425F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9191FD1C-7328-444D-A4F7-AA1F3FF1425F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBAA88A0-9C34-41C6-A516-A96D2D4AAC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBAA88A0-9C34-41C6-A516-A96D2D4AAC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBAA88A0-9C34-41C6-A516-A96D2D4AAC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBAA88A0-9C34-41C6-A516-A96D2D4AAC9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

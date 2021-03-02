@@ -100,7 +100,7 @@ namespace CoursAP2019
             //p.Display(Console.WriteLine);
             //p.Display(Console.Write);
             //quelque expression lambda dans le framework .net
-            List<Person> liste = new List<Person>() { new Person("toto", "tata"), new Person("titi", "minet") };
+            //List<Person> liste = new List<Person>() { new Person("toto", "tata"), new Person("titi", "minet") };
             //foreach(Person p in liste)
             //{
             //    AfficherPersonne(p);
@@ -120,14 +120,14 @@ namespace CoursAP2019
             //}
             //<=>
             //Person p = liste.Find(x => x.FirstName == "toto");
-            Pile<Person> pilePersonnes = new Pile<Person>(2);
-            pilePersonnes.PilePleine += NotificationPilePleine;
-            pilePersonnes.Empiler(new Person("toto", "tata"));
-            pilePersonnes.Empiler(new Person("titi", "minet"));
-            pilePersonnes.Depiler();
-            pilePersonnes.Empiler(new Person("titi", "minet"));
-            pilePersonnes.Empiler(new Person("titi", "minet"));
-            Person p = pilePersonnes.Search(x => x.FirstName == "toto");
+            /* Pile<Person> pilePersonnes = new Pile<Person>(2);
+             pilePersonnes.PilePleine += NotificationPilePleine;
+             pilePersonnes.Empiler(new Person("toto", "tata"));
+             pilePersonnes.Empiler(new Person("titi", "minet"));
+             pilePersonnes.Depiler();
+             pilePersonnes.Empiler(new Person("titi", "minet"));
+             pilePersonnes.Empiler(new Person("titi", "minet"));
+             Person p = pilePersonnes.Search(x => x.FirstName == "toto");*/
 
             //Cours event
             //Car car = new Car() { Model = "Ford", Price = 20000 };
@@ -151,6 +151,10 @@ namespace CoursAP2019
             //        car.Promotion -= NotificationSms;
             //    }
             //} while (choix != "0"); 
+            //Injection de dépendance
+
+            Car car = new Car(new Sauvegarde());
+            Car car2 = new Car(new SauvegardeSGBD());
             #endregion
         }
 

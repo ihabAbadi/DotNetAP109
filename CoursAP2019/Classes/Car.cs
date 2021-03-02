@@ -10,10 +10,17 @@ namespace CoursAP2019.Classes
         private string model;
 
         private decimal price;
+
+        private ISauvegarde _sauvegarde;
         public string Model { get => model; set => model = value; }
         public decimal Price { get => price; set => price = value; }
 
         public event Action<decimal> Promotion;
+
+        public Car(ISauvegarde sauvegarde)
+        {
+            _sauvegarde = sauvegarde;
+        }
 
         public void Display()
         {
@@ -29,6 +36,11 @@ namespace CoursAP2019.Classes
             {
                 Promotion(Price);
             }
+        }
+
+        public void Save()
+        {
+            _sauvegarde.Sauvegarder();
         }
     }
 }

@@ -119,11 +119,18 @@ namespace CoursAP2019
             //    }
             //}
             //<=>
-            Person p = liste.Find(x => x.FirstName == "toto");
+            //Person p = liste.Find(x => x.FirstName == "toto");
+            Pile<Person> pilePersonnes = new Pile<Person>(2);
+            pilePersonnes.Empiler(new Person("toto", "tata"));
+            pilePersonnes.Empiler(new Person("titi", "minet"));
+            pilePersonnes.Depiler();
+            pilePersonnes.Empiler(new Person("titi", "minet"));
+            //pilePersonnes.Empiler(new Person("titi", "minet"));
+            Person p = pilePersonnes.Search(x => x.FirstName == "toto");
             #endregion
         }
 
-       
+
         //static void Addition(ref int a, int b)
         //{
         //    a += 2;

@@ -120,13 +120,36 @@ namespace CoursAP2019
             //}
             //<=>
             //Person p = liste.Find(x => x.FirstName == "toto");
-            Pile<Person> pilePersonnes = new Pile<Person>(2);
-            pilePersonnes.Empiler(new Person("toto", "tata"));
-            pilePersonnes.Empiler(new Person("titi", "minet"));
-            pilePersonnes.Depiler();
-            pilePersonnes.Empiler(new Person("titi", "minet"));
+            //Pile<Person> pilePersonnes = new Pile<Person>(2);
+            //pilePersonnes.Empiler(new Person("toto", "tata"));
             //pilePersonnes.Empiler(new Person("titi", "minet"));
-            Person p = pilePersonnes.Search(x => x.FirstName == "toto");
+            //pilePersonnes.Depiler();
+            //pilePersonnes.Empiler(new Person("titi", "minet"));
+            ////pilePersonnes.Empiler(new Person("titi", "minet"));
+            //Person p = pilePersonnes.Search(x => x.FirstName == "toto");
+
+            //Cours event
+            Car car = new Car() { Model = "Ford", Price = 20000 };
+            car.Promotion += NotificationSms;
+            car.Promotion += NotificationEmail;
+            string choix;
+            int compteur = 0;
+            do
+            {
+                Console.Write("Promotion ? (o/n) ");
+                choix = Console.ReadLine();
+                if(choix == "o")
+                {
+                    Console.Write("Le montant de la réduction : ");
+                    decimal reduction = Convert.ToDecimal(Console.ReadLine());
+                    car.Discount(reduction);
+                    compteur++;
+                }
+                if(compteur == 3)
+                {
+                    car.Promotion -= NotificationSms;
+                }
+            } while (choix != "0"); 
             #endregion
         }
 
@@ -165,6 +188,16 @@ namespace CoursAP2019
         static double Multiplication(double a, double b)
         {
             return a * b;
+        }
+
+
+        static void NotificationSms(decimal price)
+        {
+            Console.WriteLine($"Sms avec le nouveau prix de la voiture : ${price}");
+        }
+        static void NotificationEmail(decimal price)
+        {
+            Console.WriteLine($"Mail avec le nouveau prix de la voiture : ${price}");
         }
     }
 }

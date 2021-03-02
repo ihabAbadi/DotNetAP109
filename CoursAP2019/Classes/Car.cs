@@ -9,11 +9,26 @@ namespace CoursAP2019.Classes
     {
         private string model;
 
+        private decimal price;
         public string Model { get => model; set => model = value; }
+        public decimal Price { get => price; set => price = value; }
+
+        public event Action<decimal> Promotion;
 
         public void Display()
         {
             Console.WriteLine($"Model Voiture : {Model}");
+        }
+
+        public void Discount(decimal amount)
+        {
+            Price -= amount;
+            //Lance une compagne sms et mail.
+            //Démarrer event promotion
+            if(Promotion != null)
+            {
+                Promotion(Price);
+            }
         }
     }
 }

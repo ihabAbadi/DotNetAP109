@@ -8,6 +8,7 @@ namespace CoursAP2019.Classes
     {
         private T[] tab;
         private int compteur;
+        public event Action<int> PilePleine;
         public Pile(int taille)
         {
             tab = new T[taille];
@@ -23,7 +24,10 @@ namespace CoursAP2019.Classes
             }
             else
             {
-                throw new Exception("Pile pleine");
+                if(PilePleine != null)
+                {
+                    PilePleine(tab.Length);
+                }
             }
         }
 

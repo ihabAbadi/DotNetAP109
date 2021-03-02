@@ -9,7 +9,8 @@ namespace CoursAP2019
     {
         static void Main(string[] args)
         {
-            //List<Person> persons = new List<Person>();
+            #region cours c# héritage, polymorphisme, interface
+            /*//List<Person> persons = new List<Person>();
             Person s = new Student("toto", "tata", 20, 1);
             //persons.Add(s);
             Person t = new Teacher("titi", "minet", 50, ".net");
@@ -60,7 +61,103 @@ namespace CoursAP2019
             //Lire à partir d'une console
             string nom = Console.ReadLine();
             Console.Write("Votre age : ");
-            int age = Convert.ToInt32(Console.ReadLine());
+            int age = Convert.ToInt32(Console.ReadLine());*/
+            #endregion
+
+            #region cours passage paramètre, delgate, event
+            //Passage de paramètres en ref ou out pour les variables de type valeur
+            //int c = 10;
+            //Addition(ref c, 20);
+            //int c;
+            //Addition(out c, 20);
+            //Console.WriteLine(c);
+            //Person p = new Person("toto","tata");
+            //AfficherPersonne(p);
+            //Console.WriteLine(p.FirstName);
+
+            //Console.WriteLine("Merci saisir l'age : ");
+            ////int age = Convert.ToInt32(Console.ReadLine());
+            ////Convertion avec la méthode tryparse
+            //int age;
+            //if(!Int32.TryParse(Console.ReadLine(), out age))
+            //{
+            //    Console.WriteLine("merci de saisir une valeur numérique");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("L'age est de " + age);
+            //}
+
+            //utilisation des delegates
+            //Calculatrice cal = new Calculatrice();
+            //cal.Calcule(30, 40, cal.Addition);
+            //cal.Calcule(30, 40, cal.Soustraction);
+            //cal.Calcule(30, 40, Multiplication);
+            //cal.Calcule(40, 30, delegate (double a, double b) { return a / b; });
+            //Expression lambda
+            //cal.Calcule(40, 30, (a, b) =>  a / b);
+            //Person p = new Person("toto", "tata");
+            //p.Display(Console.WriteLine);
+            //p.Display(Console.Write);
+            //quelque expression lambda dans le framework .net
+            List<Person> liste = new List<Person>() { new Person("toto", "tata"), new Person("titi", "minet") };
+            //foreach(Person p in liste)
+            //{
+            //    AfficherPersonne(p);
+            //}
+            ////<=>
+
+            //liste.ForEach(AfficherPersonne);
+
+            //Person p = null;
+            //foreach(Person ps in liste)
+            //{
+            //    if(ps.FirstName == "toto")
+            //    {
+            //        p = ps;
+            //        break;
+            //    }
+            //}
+            //<=>
+            Person p = liste.Find(x => x.FirstName == "toto");
+            #endregion
+        }
+
+       
+        //static void Addition(ref int a, int b)
+        //{
+        //    a += 2;
+        //    Console.WriteLine(a + b);
+        //}
+        static void Addition(out int a, int b)
+        {
+            a = 2;
+            Console.WriteLine(a + b);
+        }
+        static void AfficherPersonne(Person p)
+        {
+            p.FirstName = "Mr ou Mme " + p.FirstName;
+            Console.WriteLine(p.FirstName);
+        }
+
+        static bool NotreTryParse(string chaine, out int entier)
+        {
+            bool result = false;
+            try
+            {
+                entier = Convert.ToInt32(chaine);
+                result = true;
+            }catch(Exception e)
+            {
+                entier = 0;
+            }
+            return result;
+        }
+
+
+        static double Multiplication(double a, double b)
+        {
+            return a * b;
         }
     }
 }

@@ -46,5 +46,10 @@ namespace CoursAP2019.Classes
         {
             Console.WriteLine($"Nom : {FirstName}, Prénom : {LastName}, Age : {Age}");
         }
+
+        public virtual void Display(Action<string> methodeAffichage)
+        {
+            methodeAffichage($"Nom : {FirstName}, Prénom : {LastName}, Age : {Age}");
+        }
     }
 }

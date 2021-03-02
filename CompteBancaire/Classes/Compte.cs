@@ -11,16 +11,21 @@ namespace CompteBancaire.Classes
         private Client client;
         private List<Operation> operations;
         private static int compteur = 0;
+        private decimal maxDecouvert;
+
+        public event Action<int, decimal> ADecouvert;
         public int Numero { get => numero; }
         public decimal Solde { get => solde; }
         public Client Client { get => client; set => client = value; }
         public List<Operation> Operations { get => operations; set => operations = value; }
+        public decimal MaxDecouvert { get => maxDecouvert; set => maxDecouvert = value; }
 
         public Compte()
         {
             numero = ++compteur;
             Operations = new List<Operation>();
             solde = 0;
+            MaxDecouvert = 200;
         }
 
         public virtual bool Depot(Operation operation)
@@ -36,10 +41,17 @@ namespace CompteBancaire.Classes
 
         public virtual bool Retrait(Operation operation)
         {
-            if(Solde >= Math.Abs(operation.Montant) && operation.Montant < 0)
+            if(Math.Abs(Solde - Math.Abs(operation.Montant)) <= MaxDecouvert  && operation.Montant < 0)
             {
                 Operations.Add(operation);
                 solde += operation.Montant;
+                if(Solde < 0)
+                {
+                    if(ADecouvert != null)
+                    {
+                        ADecouvert(Numero, Solde);
+                    }
+                }
                 return true;
             }
             return false;

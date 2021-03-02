@@ -20,6 +20,7 @@ namespace CompteBancaire.Classes
 
         public void CreationCompte(Compte compte)
         {
+            compte.ADecouvert += NotificationDecouvert;
             Comptes.Add(compte);
         }
 
@@ -35,6 +36,13 @@ namespace CompteBancaire.Classes
                 }
             }
             return compte;
+        }
+
+        public void NotificationDecouvert(int numero, decimal solde)
+        {
+            Console.WriteLine($"Le compte numéro {numero} est à decouvert, le solde est de {solde} euros");
+            Console.WriteLine("Touche pour continuer....");
+            Console.ReadLine();
         }
     }
 }

@@ -162,7 +162,16 @@ namespace CompteBancaire.Classes
 
         private void ActionAffichageCompte()
         {
+            Compte compte = ActionChercherCompte();
+            if (compte != null)
+            {
+                    ActionAfficherMessage($"{compte.ToString()}", ConsoleColor.Magenta);
 
+            }
+            else
+            {
+                ActionAfficherMessage("Aucun compte avec ce numéro", ConsoleColor.Red);
+            }
         }
         private void ActionCalculeInteret()
         {

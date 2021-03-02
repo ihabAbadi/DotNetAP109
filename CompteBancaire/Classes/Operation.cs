@@ -19,6 +19,11 @@ namespace CompteBancaire.Classes
             numero = ++compteur;
             dateOperation = DateTime.Now;
             this.montant = montant;
-        } 
+        }
+
+        public override string ToString()
+        {
+            return $"Date Opération : {DateOperation}, Montant : {Montant}";
+        }
     }
 }

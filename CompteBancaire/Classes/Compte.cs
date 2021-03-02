@@ -45,5 +45,17 @@ namespace CompteBancaire.Classes
             return false;
         }
 
+
+        public override string ToString()
+        {
+            string retour = $"====Compte Numéro : {Numero}, Solde : {Solde} euros ====\n";
+            retour+=$"Client : {Client.ToString()} \n";
+            retour += "----Liste des opérations----\n";
+            foreach(Operation o in Operations)
+            {
+                retour += o.ToString() + "\n";
+            }
+            return retour;
+        }
     }
 }

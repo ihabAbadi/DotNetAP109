@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CompteBancaire.Classes
+namespace DAOBanque.Classes
 {
     public class CompteEpargne : Compte
     {

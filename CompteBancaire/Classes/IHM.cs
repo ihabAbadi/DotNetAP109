@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAOBanque.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -156,7 +157,7 @@ namespace CompteBancaire.Classes
         {
             Console.Write("Merci de saisir le numéro de compte : ");
             int numero = Convert.ToInt32(Console.ReadLine());
-            Compte compte = banque.RechercherCompte(numero);
+            Compte compte = banque.RechercherCompteEtOperation(numero);
             return compte;
         }
 

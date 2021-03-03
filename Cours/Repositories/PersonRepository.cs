@@ -1,6 +1,7 @@
 ﻿using CoursAdoNet.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -11,6 +12,7 @@ namespace CoursAdoNet.Repositories
         private SqlCommand command;
         private SqlConnection _connection;
         private SqlDataReader reader;
+        private string request;
 
         public PersonRepository(SqlConnection connection)
         {
@@ -19,6 +21,17 @@ namespace CoursAdoNet.Repositories
         public Person Create(Person person)
         {
             //insertion dans la base de données
+            request = "INSERT INTO person (firstname, lastname) " +
+                    "OUTPUT INSERTED.id values (@firstname,  @lastname)";
+            command = new SqlCommand(request, _connection);
+            command.Parameters.Add(new SqlParameter("@firstname", person.FristName));
+            command.Parameters.Add(new SqlParameter("@lastname", person.LastName));
+            if(_connection.State == ConnectionState.Closed)
+                _connection.Open();
+            person.Id = (int)command.ExecuteScalar();
+            command.Dispose();
+            if (_connection.State == ConnectionState.Open)
+                _connection.Close();
             return person;
         }
 

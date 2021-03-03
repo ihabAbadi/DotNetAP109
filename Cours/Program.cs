@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CoursAdoNet.Classes;
+using CoursAdoNet.Repositories;
+using CoursAdoNet.Tools;
+using System;
 using System.Data.SqlClient;
 
 namespace CoursAdoNet
@@ -8,7 +11,7 @@ namespace CoursAdoNet
         static void Main(string[] args)
         {
             //Connexion à la base de données
-            SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ihab\source\repos\CoursAP2019\basededonnees.mdf;Integrated Security=True;Connect Timeout=30");
+            //SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ihab\source\repos\CoursAP2019\basededonnees.mdf;Integrated Security=True;Connect Timeout=30");
             //requete création table
             //string request = "CREATE TABLE person (" +
             //    "id int PRIMARY KEY identity(1,1), " +
@@ -45,7 +48,8 @@ namespace CoursAdoNet
             //Console.WriteLine($"l'id de la ligne est de {id}");
             connection.Close();*/
 
-            ExempleTransactionSql();
+            //ExempleTransactionSql();
+            ActionCreatePerson();
         }
 
 
@@ -96,6 +100,26 @@ namespace CoursAdoNet
                 Console.WriteLine("erreur d'insertion personne");
             }
             connection.Close();
+        }
+
+
+        static void ActionCreatePerson()
+        {
+            Person person = new Person();
+            Console.Write("Le nom : ");
+            person.FristName = Console.ReadLine();
+            Console.Write("Le prénom : ");
+            person.LastName = Console.ReadLine();
+            PersonRepository personRespository = new PersonRepository(Connection.GetSqlConnection());
+            personRespository.Create(person);
+            if(person.Id > 0)
+            {
+                Console.WriteLine($"Personne créée avec l'id {person.Id}");
+            }
+            else
+            {
+                Console.WriteLine("Erreur insertion");
+            }
         }
     }
 }

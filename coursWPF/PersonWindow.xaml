@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:coursWPF"
         mc:Ignorable="d"
-        Title="Ajouter une personne" Height="226" Width="515">
+        Title="Ajouter une personne" Height="443" Width="1048">
     <Grid>
         <Label Content="Nom : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="29" Width="109"/>
         <TextBox x:Name="firstNameTextBox" HorizontalAlignment="Left" Margin="142,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" Height="29"/>
@@ -13,6 +13,16 @@
         <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Margin="142,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" Height="29"/>
         <Button x:Name="confirmButton" Content="Valider" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Height="31" Width="492"/>
         <TextBlock x:Name="resultTextBlock" HorizontalAlignment="Left" Margin="15,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ListBox Margin="15,157,538,76" x:Name="personListBox"></ListBox>
+        <Button Content="Voir Element" HorizontalAlignment="Left" Margin="10,371,0,0" VerticalAlignment="Top" Width="500" Height="31" Click="Button_Click"/>
+        <ListView x:Name="personListView" Margin="538,157,10,76">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nom" Width="200" DisplayMemberBinding="{Binding FristName}"/>
+                    <GridViewColumn Header="Prénom" Width="200" DisplayMemberBinding="{Binding LastName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

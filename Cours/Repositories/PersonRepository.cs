@@ -46,8 +46,28 @@ namespace CoursAdoNet.Repositories
             return person;
         }
         public List<Person> FindAll()
-        {            
-            return null;
+        {
+            List<Person> liste = new List<Person>();
+            request = "SELECT id, firstname, lastname from person";
+            SqlCommand command = new SqlCommand(request, _connection);
+            _connection.Open();
+            
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Person p = new Person()
+                {
+                    Id = reader.GetInt32(0),
+                    FristName = reader.GetString(1),
+                    LastName = reader.GetString(2),
+                };
+                liste.Add(p);
+            }
+            reader.Close();
+            //liberation des ressources
+            command.Dispose();
+            _connection.Close();
+            return liste;
         }
 
         public Person FindById(int id)

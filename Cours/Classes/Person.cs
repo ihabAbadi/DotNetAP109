@@ -40,5 +40,9 @@ namespace CoursAdoNet.Classes
         //{
         //    return null;
         //}
+        public override string ToString()
+        {
+            return $"{FristName} {LastName}";
+        }
     }
 }

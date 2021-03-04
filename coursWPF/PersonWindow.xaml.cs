@@ -24,6 +24,10 @@ namespace coursWPF
         {
             InitializeComponent();
             confirmButton.Click += ConfirmButtonClick;
+            PersonRepository personRepository = new PersonRepository(Connection.GetSqlConnection());
+
+            personListBox.ItemsSource = personRepository.FindAll();
+            personListView.ItemsSource = personRepository.FindAll();
         }
 
         public void ConfirmButtonClick(object sender, RoutedEventArgs e)
@@ -38,11 +42,17 @@ namespace coursWPF
             if(person.Id > 0)
             {
                 resultTextBlock.Text = $"Personne ajoutée avec l'id {person.Id}";
+                personListView.ItemsSource = personRepository.FindAll();
             } 
             else
             {
                 resultTextBlock.Text = $"Erreur d'insertion dans la base";
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show((personListBox.SelectedItem as Person).LastName);
         }
     }
 }

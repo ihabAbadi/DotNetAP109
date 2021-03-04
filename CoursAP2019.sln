@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompteBancaire", "CompteBan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum", "Forum\Forum.csproj", "{CBAA88A0-9C34-41C6-A516-A96D2D4AAC9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAdoNet", "Cours\CoursAdoNet.csproj", "{15C76E3F-F9F2-42B8-9D8E-00A4341F7365}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAdoNet", "Cours\CoursAdoNet.csproj", "{15C76E3F-F9F2-42B8-9D8E-00A4341F7365}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAOBanque", "DAOBanque\DAOBanque.csproj", "{DDCC00CC-9030-4B39-BCDF-8D84748CD2D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAOBanque", "DAOBanque\DAOBanque.csproj", "{DDCC00CC-9030-4B39-BCDF-8D84748CD2D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coursWPF", "coursWPF\coursWPF.csproj", "{96003448-FB76-4ACD-A6DB-5E817B978F53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DDCC00CC-9030-4B39-BCDF-8D84748CD2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDCC00CC-9030-4B39-BCDF-8D84748CD2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDCC00CC-9030-4B39-BCDF-8D84748CD2D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96003448-FB76-4ACD-A6DB-5E817B978F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96003448-FB76-4ACD-A6DB-5E817B978F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96003448-FB76-4ACD-A6DB-5E817B978F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96003448-FB76-4ACD-A6DB-5E817B978F53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

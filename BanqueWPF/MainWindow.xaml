@@ -1,0 +1,66 @@
+﻿<Window x:Class="BanqueWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BanqueWPF"
+        mc:Ignorable="d"
+        Title="Gestion compte bancaire" Height="450" Width="800">
+    <StackPanel>
+        <GroupBox Header="Création compte">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Nom client : "></Label>
+                    <TextBox Width="170" x:Name="nomTextBox"></TextBox>
+                    <Label Content="Prénom client : "></Label>
+                    <TextBox Width="170" x:Name="prenomTextBox"></TextBox>
+                    <Label Content="Téléphone client : "></Label>
+                    <TextBox Width="170" x:Name="telephoneTextBox"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Solde : " />
+                    <TextBox x:Name="soldeTextBox" Width="461"/>
+                    <Button Click="CreationCompteClick" Content="Valider" Width="276"></Button>
+                </StackPanel>
+                <TextBlock x:Name="resultatCreationTextBlock"></TextBlock>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Recherche Compte">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Numéro de compte : "></Label>
+                <TextBox x:Name="numeroTextBox" Width="386"></TextBox>
+                <Button Click="RechercheCompteClick" Content="Rechercher" Width="274"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Resultat recherche">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="resultatRechercheClientTexBlock"></TextBlock>
+                    <Separator Width="10" RenderTransformOrigin="0.5,0.5" >
+                        <Separator.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Separator.RenderTransform>
+                    </Separator>
+                    <TextBlock x:Name="resultatRechercheSoldeTexBlock"></TextBlock>
+                </StackPanel>
+                <ListView x:Name="resultatOperations" Height="200">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="390" Header="Date Opération" DisplayMemberBinding="{Binding DateOperation}"/>
+                            <GridViewColumn Width="390" Header="Montant" DisplayMemberBinding="{Binding Montant}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Effectuer un dépôt" Width="400" Click="DepotClick"></Button>
+                    <Button Content="Effectuer un retrait" Width="388" Click="RetraitClick"></Button>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</Window>

@@ -52,7 +52,12 @@ namespace coursWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show((personListBox.SelectedItem as Person).LastName);
+            if(personListView.SelectedItem is Person p)
+            {
+                PersonDetailWindow w = new PersonDetailWindow(p);
+                w.Show();
+                Close();
+            }
         }
     }
 }

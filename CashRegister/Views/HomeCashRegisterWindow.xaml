@@ -1,0 +1,108 @@
+﻿<Window x:Class="CashRegister.Views.HomeCashRegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CashRegister.Views"
+        mc:Ignorable="d"
+        Title="HomeCashRegisterWindow" Height="450" Width="800">
+    <StackPanel>
+        <DockPanel Height="300">
+            <GroupBox MinHeight="300" Width="500" HorizontalAlignment="Left">
+                <Grid>
+                    <ListView ItemsSource="{Binding BasketProducts}" SelectedItem="{Binding BasketProductSelected}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Product.Title}" Width="200" Header="Nom du produit"></GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Product.Price}" Width="100" Header="Prix"></GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Qty}" Width="80" Header="Qty"></GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Total}" Width="100" Header="Total"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
+
+                    
+                </Grid>
+            </GroupBox>
+            <StackPanel>
+                <StackPanel>
+                    <GroupBox Width="300">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Button Command="{Binding DisplayManagerProductCommand}" Content="Gestion produit" Grid.ColumnSpan="2" Grid.RowSpan="3"></Button>
+                        </Grid>
+                    </GroupBox>
+                </StackPanel>
+                <DockPanel>
+                    <StackPanel Width="200">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Command="{Binding QtyCommand}" CommandParameter="7" Grid.Column="0">7</Button>
+                                <Button Command="{Binding QtyCommand}" CommandParameter="8" Grid.Column="1">8</Button>
+                                <Button Command="{Binding QtyCommand}" CommandParameter="9" Grid.Column="2">9</Button>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Command="{Binding QtyCommand}" CommandParameter="4" Grid.Column="0">4</Button>
+                                <Button Command="{Binding QtyCommand}" CommandParameter="5" Grid.Column="1">5</Button>
+                                <Button Command="{Binding QtyCommand}" CommandParameter="6" Grid.Column="2">6</Button>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Command="{Binding QtyCommand}" CommandParameter="1" Grid.Column="0">1</Button>
+                                <Button Command="{Binding QtyCommand}" CommandParameter="2" Grid.Column="1">2</Button>
+                                <Button Command="{Binding QtyCommand}" CommandParameter="3" Grid.Column="2">3</Button>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1">0</Button>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Command="{Binding DeleteProductCommand}">Effacer</Button>
+                        <Button Command="{Binding ConfirmProductCommand}">Entrer</Button>
+                    </StackPanel>
+                </DockPanel>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel>
+            <Label FontSize="30">TOTAL:</Label>
+            <TextBlock Text="{Binding Total}" FontSize="30" VerticalAlignment="Center" x:Name="Total"></TextBlock>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock Text="{Binding DateTime}" Margin="0 0 50 0" FontSize="20" x:Name="Date"></TextBlock>
+            <Label FontSize="20">Article :</Label>
+            <TextBox Text="{Binding ProductId}" FontSize="20"></TextBox>
+
+        </DockPanel>
+
+    </StackPanel>
+</Window>

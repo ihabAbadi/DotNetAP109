@@ -6,7 +6,24 @@
         xmlns:local="clr-namespace:PenduWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <StackPanel>
+        <GroupBox Header="Ajouter un mot">
+            <StackPanel Orientation="Horizontal" >
+                <Label Content="Mot : " HorizontalAlignment="Left"  />
+                <TextBox x:Name="motTextBox" Width="400" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" />
+                <Button Click="ClickAjouterMot" Content="Valider" Width="344" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Jeu">
+            <StackPanel >
+                
+                <Button Click="ClickJouer" Content="Jouer"></Button>
+                <TextBlock TextAlignment="Center" FontSize="20" Text="Nombre Essai : " x:Name="nbEssaiTextBlock"></TextBlock>
+                <TextBlock  TextAlignment="Center" FontSize="40" x:Name="masqueTextBlock"></TextBlock>
+                <WrapPanel Orientation="Horizontal" x:Name="boutonsLettres">
+                    
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
 </Window>

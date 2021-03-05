@@ -58,6 +58,7 @@ namespace CoursMVVM.ViewModels
 
         public void ClickValidPersonne()
         {
+             
             if(SelectedPerson == null)
             {
                 Person p = new Person()

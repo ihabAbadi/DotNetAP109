@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace CoursMVVM.Models
 {
-    public class Person
+    public class Person : INotifyPropertyChanged
     {
         private int id;
         private string fristName;
@@ -12,8 +13,8 @@ namespace CoursMVVM.Models
 
 
         public int Id { get => id; set => id = value; }
-        public string FristName { get => fristName; set => fristName = value; }
-        public string LastName { get => lastName; set => lastName = value; }
+        public string FristName { get => fristName; set { fristName = value; RaisePorpertyChanged("FristName"); } }
+        public string LastName { get => lastName; set { lastName = value; RaisePorpertyChanged("LastName"); } }
 
         //public bool Save()
         //{
@@ -39,6 +40,16 @@ namespace CoursMVVM.Models
         //{
         //    return null;
         //}
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaisePorpertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
         public override string ToString()
         {
             return $"{FristName} {LastName}";

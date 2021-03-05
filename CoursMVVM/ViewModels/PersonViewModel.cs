@@ -40,8 +40,11 @@ namespace CoursMVVM.ViewModels
             set
             {
                 selectedPerson = value;
-                Nom = selectedPerson.LastName;
-                Prenom = selectedPerson.FristName;
+                if(SelectedPerson != null)
+                {
+                    Nom = selectedPerson.LastName;
+                    Prenom = selectedPerson.FristName;
+                }
             }
         }
 
@@ -49,21 +52,34 @@ namespace CoursMVVM.ViewModels
         {
             personRepository = new PersonRepository(Connection.GetSqlConnection());
             Personnes = new ObservableCollection<Person>(personRepository.FindAll());
-            CommandAjouterPersonne = new RelayCommand(ClickAjoutPersonne);
+            CommandAjouterPersonne = new RelayCommand(ClickValidPersonne);
         }
 
 
-        public void ClickAjoutPersonne()
+        public void ClickValidPersonne()
         {
-            MessageBox.Show(Nom + " " + Prenom);
-            Person p = new Person()
+            if(SelectedPerson == null)
             {
-                FristName = Prenom,
-                LastName = Nom
-            };
-            personRepository = new PersonRepository(Connection.GetSqlConnection());
-            personRepository.Create(p);
-            Personnes.Add(p);
+                Person p = new Person()
+                {
+                    FristName = Prenom,
+                    LastName = Nom
+                };
+                personRepository = new PersonRepository(Connection.GetSqlConnection());
+                personRepository.Create(p);
+                Personnes.Add(p);
+            }
+            else
+            {
+                SelectedPerson.FristName = Prenom;
+                SelectedPerson.LastName = Nom;
+                //Mise à jour dans la base de données
+                //....Avec le repository
+                //Mettre à jour la liste
+                SelectedPerson = null;
+                Nom = null;
+                Prenom = null;
+            }
         }
 
 

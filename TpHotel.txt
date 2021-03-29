@@ -1,0 +1,16 @@
+On désire informatiser la gestion des réservations et des séjours pour un l’hôtel :
+
+
+Réaliser une application de gestion des réservations.
+1) Gestion des Clients 
+a.    Affichage de la liste des clients, et détail de chaque client (Réservations, annulations).
+b.    Ajout d’un nouveau client 
+c.    Suppression de clients. 
+2) Gestion des réservations 
+a.    Possibilité d’ajouter une réservation
+b.    Possibilité de changer le statut de réservation 
+c.    Afficher la liste des réservations 
+- Chaque réservation peut avoir un seul client, un nombre d'occupants, une liste de chambres réservées, chaque chambre a un numéro, un statut, un prix
+On sauvegardera les données dans une base de données relationnelles.
+
+Pour la réalisation du  TP, On réalisera deux projets, un pour les IHM en WPF MVVM et le deuxième contiendera la bibliotèque des classes de nos models

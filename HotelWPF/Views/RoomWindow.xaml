@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelWPF.Views"
         mc:Ignorable="d"
-        Title="RoomWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Getion de chambres" Height="450" Width="511">
+    <StackPanel>
+        <GroupBox Header="Formulaire chambre">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Max occupant : " MinWidth="100"></Label>
+                    <TextBox Text="{Binding Max}" MinWidth="400"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Prix : " MinWidth="100"></Label>
+                    <TextBox Text="{Binding Price}" MinWidth="400"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Statut  : " MinWidth="100"></Label>
+                    <ComboBox MinWidth="400" ItemsSource="{Binding ListStatus}" SelectedItem="{Binding Status}"></ComboBox>
+                </StackPanel>
+                <Button Content="Valider" Command="{Binding ValidCommand}"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Liste des Chambre">
+            <StackPanel>
+                <ListView MinHeight="200" ItemsSource="{Binding Rooms}" SelectedItem="{Binding Room}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Numéro" Width="100" DisplayMemberBinding="{Binding Id}"  ></GridViewColumn>
+                            <GridViewColumn Header="Prix" Width="150" DisplayMemberBinding="{Binding Price}"  ></GridViewColumn>
+                            <GridViewColumn Header="Max Occupant" Width="100" DisplayMemberBinding="{Binding Max}"  ></GridViewColumn>
+                            <GridViewColumn Header="Statut" Width="150" DisplayMemberBinding="{Binding Status}"  ></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </GroupBox>
+        <Button Content="Supprimer" Command="{Binding DeleteCommand}">
+        </Button>
+    </StackPanel>
 </Window>

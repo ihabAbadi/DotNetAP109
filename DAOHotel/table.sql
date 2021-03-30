@@ -1,4 +1,4 @@
-﻿CREATE TABLE customer (id int primary key identity(1,1), firstName varchar not null, lastname varchar not null, phone varchar not null);
+﻿CREATE TABLE customer (id int primary key identity(1,1), firstName varchar(255) not null, lastname varchar(255) not null, phone varchar(10) not null);
 
 CREATE TABLE room (id int primary key identity(1,1), price decimal not null, max int not null, status int not null);
 

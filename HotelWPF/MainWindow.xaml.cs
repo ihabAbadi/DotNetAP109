@@ -1,4 +1,5 @@
-﻿using HotelWPF.Views;
+﻿using HotelWPF.ViewModels;
+using HotelWPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;

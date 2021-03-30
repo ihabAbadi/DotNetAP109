@@ -10,7 +10,7 @@ namespace DAOHotel.Repositories
 {
     public class ReservationRepository : BaseRepository, IRepository<Reservation>
     {
-        public Reservation Create(Reservation element)
+        public void Create(Reservation element)
         {
             
             connection = Connection.New;
@@ -19,7 +19,7 @@ namespace DAOHotel.Repositories
             try
             {
                 //requetes
-                request = "INSERT INTO reservation (customer_id, status) output inserted.id (@customer_id, @status)";
+                request = "INSERT INTO reservation (customer_id, status) output inserted.id values (@customer_id, @status)";
                 command = new SqlCommand(request, connection, transaction);
                 command.Parameters.Add(new SqlParameter("@customer_id", element.Customer.Id));
                 command.Parameters.Add(new SqlParameter("@status", element.Status));
@@ -42,7 +42,7 @@ namespace DAOHotel.Repositories
             {
                 transaction.Rollback();
             }
-            return element;
+            
         }
 
         public bool Delete(Reservation element)

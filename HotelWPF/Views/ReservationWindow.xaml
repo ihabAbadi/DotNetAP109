@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="ReservationWindow" Height="450" Width="800">
     <Grid>
-        
+
+        <Label Content="Choisir un client : " HorizontalAlignment="Left" Margin="35,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.552,0.377"/>
+        <ComboBox ItemsSource="{Binding Customers}" SelectedItem="{Binding Customer}" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top" Width="281" Height="29" Grid.ColumnSpan="2"/>
+        <Label Content="Nombre de personne: " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Max}" HorizontalAlignment="Left" Margin="147,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" Grid.ColumnSpan="2"/>
+        <Button Content="Afficher chambre" CommandParameter="{Binding ElementName=roomPanel}" Command="{Binding DisplayRoomCommand}" HorizontalAlignment="Left" Margin="288,49,0,0" VerticalAlignment="Top" Width="140"/>
+        <WrapPanel Margin="10,85,372,58" x:Name="roomPanel" />
+        <ListBox ItemsSource="{Binding Rooms}" Margin="467,85,10,58"/>
+        <Button Content="Valider" Command="{Binding ValidCommand}" HorizontalAlignment="Left" Margin="35,397,0,0" VerticalAlignment="Top" Width="755"/>
+
     </Grid>
 </Window>

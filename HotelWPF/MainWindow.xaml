@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Acceuil" Height="208" Width="524">
     <Grid>
+        <Button Content="Gestion Clients" Command="{Binding NewWindowCommand}" CommandParameter="customer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="69" Width="237"/>
+        <Button Content="Gestion chambres" Command="{Binding NewWindowCommand}" CommandParameter="room" HorizontalAlignment="Left" Margin="272,10,0,0" VerticalAlignment="Top" Height="69" Width="237"/>
+        <Button Content="Liste réservations" Command="{Binding NewWindowCommand}" CommandParameter="listReservation" HorizontalAlignment="Left" Margin="272,101,0,0" VerticalAlignment="Top" Height="69" Width="237"/>
+        <Button Content="Ajouter une réservation" Command="{Binding NewWindowCommand}" CommandParameter="reservation" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Height="69" Width="237"/>
 
     </Grid>
 </Window>

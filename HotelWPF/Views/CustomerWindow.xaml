@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelWPF.Views"
         mc:Ignorable="d"
-        Title="CustomerWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Gestion de clients" Height="398" Width="516">
+    <StackPanel>
+        <GroupBox Header="Formulaire client">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Prénom : " MinWidth="100"></Label>
+                    <TextBox Text="{Binding FirstName}" MinWidth="400"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Nom : " MinWidth="100"></Label>
+                    <TextBox Text="{Binding LastName}" MinWidth="400"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Téléphone : " MinWidth="100"></Label>
+                    <TextBox Text="{Binding Phone}" MinWidth="400"></TextBox>
+                </StackPanel>
+                <Button Content="Valider" Command="{Binding ValidCommand}"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Liste des clients">
+            <StackPanel>
+                <ListView MinHeight="200" ItemsSource="{Binding Customers}" SelectedItem="{Binding Customer}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Nom" Width="150" DisplayMemberBinding="{Binding LastName}"  ></GridViewColumn>
+                            <GridViewColumn Header="Prénom" Width="150" DisplayMemberBinding="{Binding FirstName}"  ></GridViewColumn>
+                            <GridViewColumn Header="Téléphone" Width="200" DisplayMemberBinding="{Binding Phone}"  ></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </GroupBox>
+        <Button Content="Supprimer" Command="{Binding DeleteCommand}">
+        </Button>
+    </StackPanel>
 </Window>

@@ -11,7 +11,7 @@ namespace DAOHotel.Repositories
     public class RoomRepository : BaseRepository, IRepository<Room>
     {
         
-        public Room Create(Room element)
+        public void Create(Room element)
         {
             request = "INSERT INTO room (price, max, status) OUTPUT inserted.id values (@price, @max, @status)";
             connection = Connection.New;
@@ -23,7 +23,6 @@ namespace DAOHotel.Repositories
             element.Id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
-            return element;
         }
 
         public bool Delete(Room element)
@@ -45,6 +44,7 @@ namespace DAOHotel.Repositories
             request = "SELECT id, price, max, status from room";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
+            connection.Open();
             reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -70,6 +70,7 @@ namespace DAOHotel.Repositories
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@status", status));
+            connection.Open();
             reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -97,6 +98,7 @@ namespace DAOHotel.Repositories
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@id", id));
+            connection.Open();
             reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -122,6 +124,7 @@ namespace DAOHotel.Repositories
             connection = Connection.New;
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@id", id));
+            connection.Open();
             reader = command.ExecuteReader();
             if (reader.Read())
             {

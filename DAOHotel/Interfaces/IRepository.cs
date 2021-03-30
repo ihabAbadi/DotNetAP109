@@ -6,7 +6,7 @@ namespace DAOHotel.Interfaces
 {
     public interface IRepository<T>
     {
-        T Create(T element);
+        void Create(T element);
         bool Update(T element);
         bool Delete(T element);
         List<T> FindAll();

@@ -19,6 +19,7 @@ namespace DAOHotel.Models
         public Reservation()
         {
             Rooms = new List<Room>();
+            Customer = new Customer();
         }
     }
 

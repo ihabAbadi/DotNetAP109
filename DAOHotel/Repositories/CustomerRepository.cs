@@ -11,7 +11,7 @@ namespace DAOHotel.Repositories
     public class CustomerRepository : BaseRepository, IRepository<Customer>
     {
         
-        public Customer Create(Customer element)
+        public void Create(Customer element)
         {
             request = "INSERT INTO customer (firstname, lastname, phone) OUTPUT inserted.id values (@firstname, @lastname, @phone)";
             connection = Connection.New;
@@ -23,7 +23,7 @@ namespace DAOHotel.Repositories
             element.Id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
-            return element;
+            
         }
 
         public bool Delete(Customer element)
@@ -45,6 +45,7 @@ namespace DAOHotel.Repositories
             request = "SELECT id, firstname, lastname, phone from customer";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
+            connection.Open();
             reader = command.ExecuteReader();
             while(reader.Read())
             {
@@ -69,6 +70,7 @@ namespace DAOHotel.Repositories
             request = "SELECT id, firstname, lastname, phone from customer where id = @id";
             connection = Connection.New;
             command = new SqlCommand(request, connection);
+            connection.Open();
             command.Parameters.Add(new SqlParameter("@id", id));
             reader = command.ExecuteReader();
             if (reader.Read())
